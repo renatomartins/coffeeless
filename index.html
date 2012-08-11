@@ -33,8 +33,13 @@
           code.className = ''
           var name = file.name
           if (name.lastIndexOf('.coffee') === name.length-7) {
-            code.className = 'prettyprint lang-js'
-            code.textContent = CoffeeScript.compile(event.target.result)
+            try {
+              var result = CoffeeScript.compile(event.target.result)
+              code.className = 'prettyprint lang-js'
+              code.textContent = result
+            } catch (e) {
+              code.textContent = e.message
+            }
           } else if (name.lastIndexOf('.less') === name.length-5) {
             (new(less.Parser)).parse(event.target.result, function(e,r){
               if (e)

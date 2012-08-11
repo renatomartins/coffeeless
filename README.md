@@ -11,3 +11,4 @@ todo:
  - minifiers
  - dnd on the whole page
  - dnd several files at a time
+ - save as
